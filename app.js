@@ -22,8 +22,10 @@ deviceInfo.getDeviceInfo().then(function (deviceInfo) {
         try {
             jsonData = JSON.parse(jsonDataBuffer);
             jsonDataBuffer = '';
+
             console.log(JSON.stringify(jsonData, null, 2));
             if(jsonData.blinkStrength || jsonData.eSense ){
+                console.log('sending skynet message');
                 var data = {
                     devices : process.env.BROADCAST_UUID || '*',
                     payload : jsonData
