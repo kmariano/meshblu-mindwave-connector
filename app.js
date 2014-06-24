@@ -23,6 +23,15 @@ deviceInfo.getDeviceInfo().then(function (deviceInfo) {
             jsonData = JSON.parse(jsonDataBuffer);
             jsonDataBuffer = '';
             console.log(JSON.stringify(jsonData, null, 2));
+            if(jsonData.blinkStrength || jsonData.eSense ){
+                var data = {
+                    devices : process.env.BROADCAST_UUID || '*',
+                    payload : jsonData
+                };
+                skynetConn.message(data);
+                console.log('Message sent to skynet ');
+                console.log(data);
+            }
         } catch (e) {
             console.log(e);
         }
