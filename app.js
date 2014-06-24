@@ -17,12 +17,9 @@ deviceInfo.getDeviceInfo().then(function (deviceInfo) {
     var jsonDataBuffer = '';
     mindwaveConn.on('data', function (result) {
         console.log(result.toString());
-        jsonDataBuffer += result.toString();
         var jsonData;
         try {
-            jsonData = JSON.parse(jsonDataBuffer);
-            jsonDataBuffer = '';
-
+            jsonData = JSON.parse(result.toString());
             console.log(JSON.stringify(jsonData, null, 2));
             if(jsonData.blinkStrength || jsonData.eSense ){
                 console.log('sending skynet message');
@@ -37,8 +34,6 @@ deviceInfo.getDeviceInfo().then(function (deviceInfo) {
         } catch (e) {
             console.log(e);
         }
-        console.log(result.toString());
-
     });
 
     mindwaveConn.on('end', function () {
