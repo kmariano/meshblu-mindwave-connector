@@ -4,8 +4,8 @@ module.exports = {
         port: process.env.MINDWAVE_PORT || '13854'
     },
     skynet: {
-        host: process.env.SKYNET_HOST || 'skynet.im',
-        port: process.env.SKYNET_PORT || '80'
+        host: process.env.SKYNET_HOST || 'localhost',
+        port: process.env.SKYNET_PORT || '3000'
     },
     app: {
         name: 'skynet-mindwave-connector',
