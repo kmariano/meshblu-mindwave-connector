@@ -6,7 +6,7 @@ var deviceInfo = require('./lib/getDeviceInfo');
 var skynetConn, mindwaveConn, device;
 deviceInfo.getDeviceInfo().then(function (deviceInfo) {
     device = deviceInfo;
-    return skynet.connect(deviceInfo.uuid, deviceInfo.token)
+    return skynet.connect(deviceInfo)
 }).then(function (conn) {
     skynetConn = conn;
     return mindwave.connect();
